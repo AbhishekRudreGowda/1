@@ -66,10 +66,10 @@ function mostWicketWicketsTeam() {
   const yearId = document.getElementById("year-input").value;
   console.log(yearId);
   if (yearId<2008 || yearId>2019) {
-    alert("Wrong Input of Year!");
+    console.log("Error! !");
 }
   else{
-  fetch("http://localhost:3000/mostWicketsTeam/"+yearId)
+  fetch("http://akshayb-is.herokuapp.com/mostWicketsTeam/"+yearId)
   .then((response) => { 
     return response.json() 
   })

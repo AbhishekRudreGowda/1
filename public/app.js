@@ -123,6 +123,7 @@ function visualizeData(data) {
   visualizeMostEconomicalBowlers(data.mosteconomicalBowlers);
   visualizeMostManOfMatches(data.mostManOfTheMatches); 
   visualizeWinsPerVenue(data.winsPerVenue, data.winsByAllTeams);
+  visualizeTosses(data.tosses)
   return;
 }
 
@@ -369,5 +370,41 @@ function visualizeWinsPerVenue(winsPerVenue, winsByAllTeams) {
   });
 }
 
+function visualizeTosses(tosses) {
+  const seriesData = [];
+  for (let team in tosses) {
+    seriesData.push([team, tosses[team]]);
+  }
+  Highcharts.chart("container_102", {
+    chart: {
+      type: "column"
+    },
+    title: {
+      text: "Tosses per Team in 2016"
+    },
+    subtitle: {
+      text:
+        'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data">IPL Dataset</a>'
+    },
+    xAxis: {
+      title: {
+        text: "Teams"
+      },
+      type: "category"
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: "Tosses"
+      }
+    },
+    series: [
+      {
+        name: "Tosses",
+        data: seriesData,
 
+      }
+    ]
+  });
+}
 

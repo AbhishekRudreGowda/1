@@ -7,6 +7,7 @@ const mosteconomicalBowlers =require("./ipl/mosteconomicalBowlers");
 const mostManOfTheMatches=require("./ipl/mostManOfTheMatches");
 const winsPerVenue= require("./ipl/winsPerVenue");
 const winsByAllTeams=require("./ipl/winsByAllTeams");
+const tosses=require("./ipl/tosses");
 
 const DELIVERIES_FILE_PATH = "./csv_data/deliveries.csv";
 const MATCHES_FILE_PATH = "./csv_data/matches.csv";
@@ -29,6 +30,7 @@ function main() {
         let result5=mostManOfTheMatches(matches);
         let result6=winsPerVenue(matches);
         let result7 = winsByAllTeams(matches);
+        let result102 = tosses(matches)
 
         all_in_one_Result['matchesPlayedPerYear'] = result;
         all_in_one_Result['winsPerTeameachYear'] = result2;
@@ -37,6 +39,7 @@ function main() {
         all_in_one_Result['mostManOfTheMatches'] = result5;
         all_in_one_Result['winsPerVenue'] = result6;
         all_in_one_Result['winsByAllTeams'] =result7;
+        all_in_one_Result['tosses'] =result102;
         const jsonString =JSON.stringify(all_in_one_Result);
         fs.writeFile(JSON_OUTPUT_FILE_PATH, jsonString, "utf8", err => {
         if(err){

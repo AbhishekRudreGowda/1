@@ -124,6 +124,8 @@ function visualizeData(data) {
   visualizeMostManOfMatches(data.mostManOfTheMatches); 
   visualizeWinsPerVenue(data.winsPerVenue, data.winsByAllTeams);
   visualizeTosses(data.tosses)
+  visualizeHighestRunsScorer(data.highestRunsScorer)
+  visualizeHighestWicketTakers(data.highestWicketTakers)
   return;
 }
 
@@ -403,6 +405,82 @@ function visualizeTosses(tosses) {
         name: "Tosses",
         data: seriesData,
 
+      }
+    ]
+  });
+}
+
+function visualizeHighestRunsScorer(highestRunsScorer) {
+  const seriesData = [];
+  for (let player in highestRunsScorer) {
+    seriesData.push([player, highestRunsScorer[player]]);
+  }
+
+  Highcharts.chart("container_710", {
+    chart: {
+      type: "column"
+    },
+    title: {
+      text: "Highest Runs Scorer of 2018"
+    },
+    subtitle: {
+      text:
+        'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data">IPL Dataset</a>'
+    },
+    xAxis: {
+      title: {
+        text: "player"
+      },
+      type: "category"
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: "Runs"
+      }
+    },
+    series: [
+      {
+        name: "runs",
+        data: seriesData
+      }
+    ]
+  });
+}
+
+function visualizeHighestWicketTakers(highestWicketTakers) {
+  const seriesData = [];
+  for (let player in highestWicketTakers) {
+    seriesData.push([player, highestWicketTakers[player]]);
+  }
+
+  Highcharts.chart("container_810", {
+    chart: {
+      type: "column"
+    },
+    title: {
+      text: "Top 10 Wicket Takers of 2016"
+    },
+    subtitle: {
+      text:
+        'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data">IPL Dataset</a>'
+    },
+    xAxis: {
+      title: {
+        text: "players"
+      },
+      type: "category"
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: "Wickets"
+      }
+    },
+    series: [
+      {
+        name: "wicket",
+        data: seriesData
       }
     ]
   });

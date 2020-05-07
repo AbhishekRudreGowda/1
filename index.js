@@ -7,7 +7,11 @@ const mosteconomicalBowlers =require("./ipl/mosteconomicalBowlers");
 const mostManOfTheMatches=require("./ipl/mostManOfTheMatches");
 const winsPerVenue= require("./ipl/winsPerVenue");
 const winsByAllTeams=require("./ipl/winsByAllTeams");
+const highestRunsScorer=require("./ipl/highestRunsScorer");
 const tosses=require("./ipl/tosses");
+const highestWicketTakers=require("./ipl/highestWicketTakers");
+
+
 
 const DELIVERIES_FILE_PATH = "./csv_data/deliveries.csv";
 const MATCHES_FILE_PATH = "./csv_data/matches.csv";
@@ -30,7 +34,9 @@ function main() {
         let result5=mostManOfTheMatches(matches);
         let result6=winsPerVenue(matches);
         let result7 = winsByAllTeams(matches);
+        let result710=highestRunsScorer(matches,deliveries)
         let result102 = tosses(matches)
+        let result810=highestWicketTakers(matches,deliveries)
 
         all_in_one_Result['matchesPlayedPerYear'] = result;
         all_in_one_Result['winsPerTeameachYear'] = result2;
@@ -40,6 +46,9 @@ function main() {
         all_in_one_Result['winsPerVenue'] = result6;
         all_in_one_Result['winsByAllTeams'] =result7;
         all_in_one_Result['tosses'] =result102;
+        all_in_one_Result['highestRunsScorer']=result710;
+        all_in_one_Result['highestWicketTakers']=result810;
+ 
         const jsonString =JSON.stringify(all_in_one_Result);
         fs.writeFile(JSON_OUTPUT_FILE_PATH, jsonString, "utf8", err => {
         if(err){

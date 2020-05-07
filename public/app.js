@@ -6,61 +6,61 @@ function fetchAndVisualizeData() {
 
 fetchAndVisualizeData();
 
-// function mostWicketsTeam(){
-//   const yearId=document.getElementById("year-input").value;
-//   console.log(yearId);
-//   if(yearId>2019 || yearId<=2007){
+function mostWicketsTeam(){
+  const yearId=document.getElementById("year-input").value;
+  console.log(yearId);
+  if(yearId>2019 || yearId<=2007){
     
-//     alert("Error Input!")
-//   }else{
-//     fetch("http://localhost:3000/mostWicketTeams/"+yearId)
-//     .then((response) =>{
-// return response.json();
-//     })
-//     .then(data =>{
-//       visualizeMostWicketsTeam(data)
-//     });
-//   }
-// }
+    alert("Error Input!")
+  }else{
+    fetch("https://akshayb-is.herokuapp.com/mostWicketTeams/"+yearId)
+    .then((response) =>{
+return response.json();
+    })
+    .then(data =>{
+      visualizeMostWicketsTeam(data)
+    });
+  }
+}
 
-// function visualizeMostWicketsTeam(mostWicketsTeam){
-//   const seriesData=[];
-//   for(let team in mostWicketsTeam){
-//     seriesData.push(team,mostWicketsTeam[team]);
-//   }
-//   Highcharts.chart("container_110", {
-//     chart: {
-//       type: "column"
-//     },
-//     title: {
-//       text: "Most Wickets Per Team in the selected Year"
-//     },
-//     subtitle: {
-//       text:
-//         'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data">IPL Dataset</a>'
-//     },
-//     xAxis: {
-//       title: {
-//         text: "Teams"
-//       },
-//       type: "category"
-//     },
-//     yAxis: {
-//       min: 0,
-//       title: {
-//         text: "Most Wickets"
-//       }
-//     },
-//     series: [
-//       {
-//         name: "Most Wickets",
-//         data: seriesData,
+function visualizeMostWicketsTeam(mostWicketsTeam){
+  const seriesData=[];
+  for(let team in mostWicketsTeam){
+    seriesData.push(team,mostWicketsTeam[team]);
+  }
+  Highcharts.chart("container_110", {
+    chart: {
+      type: "column"
+    },
+    title: {
+      text: "Most Wickets Per Team in the selected Year"
+    },
+    subtitle: {
+      text:
+        'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data">IPL Dataset</a>'
+    },
+    xAxis: {
+      title: {
+        text: "Teams"
+      },
+      type: "category"
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: "Most Wickets"
+      }
+    },
+    series: [
+      {
+        name: "Most Wickets",
+        data: seriesData,
 
-//       }
-//     ]
-//   });
+      }
+    ]
+  });
 
-// }
+}
 
 function mostWicketWicketsTeam() {
   const yearId = document.getElementById("year-input").value;
